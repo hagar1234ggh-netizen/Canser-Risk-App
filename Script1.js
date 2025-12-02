@@ -1,5 +1,5 @@
-﻿// دالة إظهار الصفحة: تخفي جميع الصفحات وتُظهر الصفحة المطلوبة فقط
-function showPage(pageId) {
+// دالة إظهار الصفحة: تخفي جميع الصفحات وتُظهر الصفحة المطلوبة فقط
+function displayPage(pageId) {
     // إخفاء جميع العناصر التي تحمل الفئة 'page'
     document.querySelectorAll('.page').forEach(page => {
         page.classList.remove('active');
@@ -29,10 +29,13 @@ function handleSignup(form) {
     }
 
     // 2. التحقق مما إذا كان المستخدم موجوداً بالفعل
+    // تم إلغاء هذا التحقق لتسهيل التجربة، يمكن إعادته إذا أردتِ أن تسمحي بحساب واحد فقط
+    /*
     if (localStorage.getItem('registeredUser')) {
         alert("Account already exists. Please Log In or clear your browser storage to create a new one.");
         return false;
     }
+    */
     
     // 3. حفظ بيانات المستخدم في التخزين المحلي (localStorage)
     const userData = { username: username, password: password };
@@ -71,7 +74,7 @@ function handleLogin(form) {
     if (loginUsername === userData.username && loginPassword === userData.password) {
         alert("Login Successful! Welcome back.");
         // **هنا يتم الانتقال للصفحة بعد تسجيل الدخول بنجاح**
-        showPage('welcomePage'); 
+        displayPage('welcomePage'); 
     } else {
         alert("Login Failed. Incorrect username or password.");
     }
@@ -131,11 +134,11 @@ function calculateAndShowResult(form) {
         alert(`Risk Assessment Complete: Your result is ${riskLevel}. Please proceed to the next page for recommendations.`);
     }
     
-    showPage(nextPageId);
+    displayPage(nextPageId);
     return false;
 }
 
 // عند تحميل الصفحة بالكامل، ابدأ بصفحة الدخول (loginPage)
 document.addEventListener('DOMContentLoaded', () => {
-    showPage('loginPage');
+    displayPage('loginPage');
 });
