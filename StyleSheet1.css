@@ -1,4 +1,4 @@
-﻿/* Custom Stylesheet1.css */
+/* Custom Stylesheet1.css */
 
 /* إخفاء جميع الصفحات بشكل افتراضي */
 .page {
@@ -6,10 +6,10 @@
     padding-bottom: 50px; /* مساحة في الأسفل */
 }
 
-    /* إظهار الصفحة النشطة فقط */
-    .page.active {
-        display: block;
-    }
+/* إظهار الصفحة النشطة فقط */
+.page.active {
+    display: block;
+}
 
 /* تنسيق للحاوية الرئيسية لوسطنة المحتوى */
 .container {
