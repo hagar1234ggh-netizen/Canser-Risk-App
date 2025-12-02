@@ -1,0 +1,50 @@
+﻿/* Custom Stylesheet1.css */
+
+/* إخفاء جميع الصفحات بشكل افتراضي */
+.page {
+    display: none;
+    padding-bottom: 50px; /* مساحة في الأسفل */
+}
+
+    /* إظهار الصفحة النشطة فقط */
+    .page.active {
+        display: block;
+    }
+
+/* تنسيق للحاوية الرئيسية لوسطنة المحتوى */
+.container {
+    max-width: 800px; /* تحديد أقصى عرض للحاوية */
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* تنسيق لكروت الأسئلة */
+.card {
+    border-radius: 10px;
+    border: 1px solid #ddd;
+}
+
+/* تنسيق لعناوين الأسئلة */
+.card-body label.form-label {
+    font-weight: bold;
+    color: #333;
+}
+
+/* تنسيق أزرار الاختيار (Radio Buttons) */
+.form-check {
+    padding-left: 2.5em; /* زيادة المسافة للمحاذاة */
+}
+
+/* تنسيق الألوان لتسهيل القراءة (اختياري) */
+body {
+    background-color: #f8f9fa; /* لون خلفية خفيف */
+}
+
+/* تنسيق لصفحة النتائج (لجعلها أكثر وضوحاً) */
+#highRiskPage .card-body,
+#mediumRiskPage .card-body,
+#lowRiskPage .card-body {
+    background-color: #ffffff;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
