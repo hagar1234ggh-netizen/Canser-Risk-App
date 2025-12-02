@@ -10,8 +10,8 @@ function showPage(pageId) {
 
 // **الدالة الجديدة: للتسجيل وإنشاء حساب (Sign Up)**
 function handleSignup(form) {
-    event.preventDefault();
-
+    event.preventDefault(); 
+    
     const username = document.getElementById('signupUsername').value.trim();
     const password = document.getElementById('signupPassword').value.trim();
     const confirmPass = document.getElementById('confirmPassword').value.trim();
@@ -29,23 +29,22 @@ function handleSignup(form) {
     }
 
     // 2. التحقق مما إذا كان المستخدم موجوداً بالفعل
-    // إذا كان هناك بيانات مسجلة، نعتبرها حساب واحد موجود بالفعل
     if (localStorage.getItem('registeredUser')) {
         alert("Account already exists. Please Log In or clear your browser storage to create a new one.");
         return false;
     }
-
+    
     // 3. حفظ بيانات المستخدم في التخزين المحلي (localStorage)
     const userData = { username: username, password: password };
     localStorage.setItem('registeredUser', JSON.stringify(userData));
 
     alert(`Account created successfully for user: ${username}! You can now Log In.`);
-
+    
     // مسح حقول التسجيل والتركيز على حقول الدخول
     document.getElementById('signupUsername').value = '';
     document.getElementById('signupPassword').value = '';
     document.getElementById('confirmPassword').value = '';
-    document.getElementById('loginUsername').value = username; // ملء اسم المستخدم تلقائيًا لتسهيل الدخول
+    document.getElementById('loginUsername').value = username; 
     document.getElementById('loginPassword').focus();
 
     return false;
@@ -71,8 +70,8 @@ function handleLogin(form) {
     // 2. التحقق من تطابق البيانات
     if (loginUsername === userData.username && loginPassword === userData.password) {
         alert("Login Successful! Welcome back.");
-        // **الخطوة الصحيحة للانتقال للصفحة المطلوبة بعد الدخول**
-        showPage('welcomePage');
+        // **هنا يتم الانتقال للصفحة بعد تسجيل الدخول بنجاح**
+        showPage('welcomePage'); 
     } else {
         alert("Login Failed. Incorrect username or password.");
     }
@@ -81,14 +80,15 @@ function handleLogin(form) {
 
 
 // ************************************************************
-// دالة حساب المخاطر وعرض النتيجة (لم تتغير)
+// دالة حساب المخاطر وعرض النتيجة 
 // ************************************************************
 function calculateAndShowResult(form) {
-    event.preventDefault();
+    event.preventDefault(); 
 
     let totalRiskPoints = 0;
-
+    
     // تحديد النقاط لكل سؤال بناءً على الأهمية النسبية:
+    
     // Q1: تاريخ عائلي = 4
     if (form.elements['Q1'].value === 'yes') { totalRiskPoints += 4; }
     // Q2: العمر (> 50) = 3
@@ -110,27 +110,27 @@ function calculateAndShowResult(form) {
     // Q10: توتر = 1
     if (form.elements['Q10'].value === 'yes') { totalRiskPoints += 1; }
 
-
+    
     let nextPageId;
     let riskLevel;
 
     // تحديد مستويات الخطر (الحد الأقصى للنقاط = 20):
     if (totalRiskPoints >= 15) {
         riskLevel = "High";
-        nextPageId = "highRiskPage";
-        alert(`Risk Assessment Complete: Your result is ${riskLevel}. Please proceed to the next page for recommendations.`);
-    }
+        nextPageId = "highRiskPage"; 
+        alert(`Risk Assessment Complete: Your result is ${riskLevel}. Please proceed to the next page for recommendations.`); 
+    } 
     else if (totalRiskPoints >= 8) {
         riskLevel = "Moderate";
-        nextPageId = "mediumRiskPage";
+        nextPageId = "mediumRiskPage"; 
         alert(`Risk Assessment Complete: Your result is ${riskLevel}. Please proceed to the next page for recommendations.`);
-    }
+    } 
     else {
         riskLevel = "Low";
-        nextPageId = "lowRiskPage";
+        nextPageId = "lowRiskPage"; 
         alert(`Risk Assessment Complete: Your result is ${riskLevel}. Please proceed to the next page for recommendations.`);
     }
-
+    
     showPage(nextPageId);
     return false;
 }
